@@ -1,3 +1,4 @@
+; -*- mode:ruby; -*-
 module Autotest::GnomeNotify
 
   # Time notification will be displayed before disappearing automatically
