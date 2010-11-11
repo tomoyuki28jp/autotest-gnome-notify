@@ -1,0 +1,10 @@
+TO INSTALL:
+1. git clone git://github.com/tomoyuki28jp/autotest-gnome-notify.git ~/.autotest.d
+2. ln -s ~/.autotest.d/.autotest ~/
+
+NOTE:
+I've only tested on the following environment:
+- Ubuntu 10.04
+- notify-send 0.4.5
+- rails 3.0.0
+- autotest 4.4.2
