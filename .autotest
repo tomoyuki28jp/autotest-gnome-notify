@@ -1,0 +1,38 @@
+module Autotest::GnomeNotify
+
+  # Time notification will be displayed before disappearing automatically
+  EXPIRATION_IN_SECONDS = 20
+
+  # Convenience method to send an error notification message
+  #
+  # [stock_icon]   Stock icon name of icon to display
+  # [title]        Notification message title
+  # [message]      Core message for the notification
+  def self.notify stock_icon, title, message
+    options = "-t #{EXPIRATION_IN_SECONDS * 1000} -i #{stock_icon}"
+    system "notify-send #{options} '#{title}' '#{message}'"
+  end
+
+  Autotest.add_hook :ran_command do |at|
+    results = at.results.last
+ 
+    unless results.nil?
+      output = results[/(\d+)\s+examples?,\s*(\d+)\s+failures?(,\s*(\d+)\s+pending)?/]
+      if output
+        examples = $~[0].to_i
+        failures = $~[2].to_i
+        pending  = $~[4].to_i
+      end
+ 
+      if failures > 0
+        notify "gtk-dialog-error", "Failed #{failures} tests", output
+      elsif pending > 0
+        notify "gtk-dialog-warning", "Pending #{pending} tests", output
+      elsif examples == 0
+        notify "gtk-dialog-question", "No test cases", "Is that okay?"
+      else
+        notify "gtk-dialog-info", "All tests passed!", output
+      end
+    end
+  end
+end
