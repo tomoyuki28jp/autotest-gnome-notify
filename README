@@ -8,3 +8,10 @@ I've only tested on the following environment:
 - notify-send 0.4.5
 - rails 3.0.0
 - autotest 4.4.2
+
+LICENSE:
+ Copyright (c) Tomoyuki Matsumoto
+ BSD license - http://www.opensource.org/licenses/bsd-license.php
+
+ Image file is downloaded from the following site.
+ http://www.danielfischer.com/2007/05/14/ruby-on-rails-bdd-with-autotest-growl-rspec/

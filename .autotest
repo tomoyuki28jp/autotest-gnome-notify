@@ -1,4 +1,4 @@
-; -*- mode:ruby; -*-
+# -*- mode:ruby; -*-
 module Autotest::GnomeNotify
 
   # Time notification will be displayed before disappearing automatically
@@ -32,7 +32,7 @@ module Autotest::GnomeNotify
       elsif examples == 0
         notify "gtk-dialog-question", "No test cases", "Is that okay?"
       else
-        notify "gtk-dialog-info", "All tests passed!", output
+        notify "~/.autotest.d/pass.png", "All tests passed!", output
       end
     end
   end
