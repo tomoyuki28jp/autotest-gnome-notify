@@ -14,6 +14,10 @@ module Autotest::GnomeNotify
     system "notify-send #{options} '#{title}' '#{message}'"
   end
 
+  Autotest.add_hook :initialize do |at|
+    %w{.git vendor rerun.txt tmp log support}.each {|exception| at.add_exception(exception)}
+  end
+
   Autotest.add_hook :ran_command do |at|
     results = at.results.last
  
